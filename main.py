@@ -34,6 +34,7 @@ class ChristmasEmailSender:
     def send_mail(self, to, subject, email_text):
         """manager sends mail to user"""
         text = structure(self.manager, to, subject, email_text)
+        text = text.encode('utf-8')
         server = smtplib.SMTP_SSL('smtp.gmail.com')
         server.ehlo()
         server.login(**self.credentials)
